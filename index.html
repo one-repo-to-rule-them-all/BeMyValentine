@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Be My Valentine 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffd6e8, #ffeef5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #d6336c;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      position: relative;
+      height: 200px;
+    }
+
+    button {
+      font-size: 1.2rem;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      position: fixed;
+      transition: transform 0.15s ease;
+      z-index: 10;
+    }
+
+    #yesBtn {
+      background-color: #51cf66;
+      color: white;
+      left: 50%;
+      transform: translateX(-120%);
+    }
+
+    #noBtn {
+      background-color: #ff6b6b;
+      color: white;
+      left: 50%;
+      transform: translateX(20%);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .kitten {
+      margin-top: 20px;
+    }
+
+    .kitten img {
+      width: 250px;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 id="question">Will you be my valentine? 🌹</h1>
+
+    <div class="buttons" id="buttons">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn">No 😅</button>
+    </div>
+
+    <div class="kitten hidden" id="kitten">
+      <h2>Don’t play with me 😿</h2>
+      <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Sad kitten">
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const kitten = document.getElementById("kitten");
+    const buttons = document.getElementById("buttons");
+    const question = document.getElementById("question");
+
+    let attempts = 0;
+    const maxAttempts = 5;
+
+    noBtn.addEventListener("mouseenter", moveNoButton);
+    noBtn.addEventListener("click", moveNoButton);
+
+    function moveNoButton() {
+      attempts++;
+
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+
+      if (attempts >= maxAttempts) {
+        buttons.classList.add("hidden");
+        kitten.classList.remove("hidden");
+      }
+    }
+
+    yesBtn.addEventListener("click", () => {
+      question.textContent = "Yay!! 💕 I knew you’d say yes!";
+      buttons.classList.add("hidden");
+    });
+  </script>
+</body>
+</html>
