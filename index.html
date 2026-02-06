@@ -79,6 +79,24 @@
       width: 250px;
       border-radius: 20px;
     }
+
+    /* Explosion effects */
+    @keyframes shake {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-6px, 6px); }
+      50% { transform: translate(6px, -6px); }
+      75% { transform: translate(-6px, -6px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    .explode {
+      animation: shake 0.4s infinite;
+    }
+
+    .dark {
+      background: black;
+      color: white;
+    }
   </style>
 </head>
 
@@ -99,8 +117,11 @@
   </div>
 
   <!-- Audio -->
-  <audio id="celebrationAudio" src="Rick_Astley_Never_Gonna_Give_You_Up.mp3" preload="auto" loop></audio>
-
+   <audio id="celebrationAudio"
+         src="Rick_Astley_Never_Gonna_Give_You_Up.mp3"
+         preload="auto"
+         loop>
+  </audio>
 
   <script>
     const noBtn = document.getElementById("noBtn");
@@ -113,22 +134,44 @@
     let attempts = 0;
     const maxAttempts = 5;
 
-    noBtn.addEventListener("mouseenter", moveNoButton);
-    noBtn.addEventListener("click", moveNoButton);
+    noBtn.addEventListener("mouseenter", handleNoInteraction);
+    noBtn.addEventListener("click", handleNoInteraction);
 
-    function moveNoButton() {
+    function handleNoInteraction() {
       attempts++;
 
+      if (attempts >= maxAttempts) {
+        triggerKittenMode();
+        return;
+      }
+
+      moveNoButtonRandomly();
+    }
+
+    function moveNoButtonRandomly() {
       const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
       const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
 
       noBtn.style.left = `${x}px`;
       noBtn.style.top = `${y}px`;
+    }
 
-      if (attempts >= maxAttempts) {
-        buttons.classList.add("hidden");
-        kitten.classList.remove("hidden");
-      }
+    function triggerKittenMode() {
+      question.textContent = "";
+      buttons.classList.add("hidden");
+      kitten.classList.remove("hidden");
+  
+      // Optional chaos mode 🔥
+      setTimeout(() => {
+        document.body.classList.add("explode");
+      }, 3000);
+
+      setTimeout(() => {
+        document.body.classList.remove("explode");
+        document.body.classList.add("dark");
+        document.body.innerHTML = "<h1>💥 Too late.</h1>";
+      }, 4000);
+      
     }
 
     yesBtn.addEventListener("click", () => {
