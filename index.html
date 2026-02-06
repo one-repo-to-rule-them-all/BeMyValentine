@@ -5,15 +5,15 @@
   <title>Be My Valentine 💖</title>
 
   <!-- Google Analytics (replace with your own GA4 Measurement ID) -->
-  <!-- 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
+  <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E3727DY7HP"></script>
+    <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>  
-  -->
+
+    gtag('config', 'G-E3727DY7HP');
+    </script>
 
   <style>
     body {
@@ -136,9 +136,20 @@
 
     noBtn.addEventListener("mouseenter", handleNoInteraction);
     noBtn.addEventListener("click", handleNoInteraction);
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    gtag("event", "yes_clicked", {
+      device_type: isMobile ? "mobile" : "desktop"
+    });
+
 
     function handleNoInteraction() {
       attempts++;
+      gtag("event", "no_attempt", {
+      event_category: "valentine",
+      event_label: "No Button Hover",
+      value: attempts
+    });
+
 
       if (attempts >= maxAttempts) {
         triggerKittenMode();
@@ -175,6 +186,12 @@
     }
 
     yesBtn.addEventListener("click", () => {
+
+        gtag("event", "yes_clicked", {
+            event_category: "valentine",
+            event_label: "Yes Button",
+            value: attempts
+        });
         question.textContent = "Yay!! 💕 I knew you’d say yes!";
         buttons.classList.add("hidden");
 
