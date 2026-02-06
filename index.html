@@ -4,6 +4,17 @@
   <meta charset="UTF-8" />
   <title>Be My Valentine 💖</title>
 
+  <!-- Google Analytics (replace with your own GA4 Measurement ID) -->
+  <!-- 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>  
+  -->
+
   <style>
     body {
       margin: 0;
@@ -82,9 +93,14 @@
 
     <div class="kitten hidden" id="kitten">
       <h2>Don’t play with me 😿</h2>
-      <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Sad kitten">
+      <!--<img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Sad kitten">-->
+      <img src="gunCat.gif" alt="Sad kitten">
     </div>
   </div>
+
+  <!-- Audio -->
+  <audio id="celebrationAudio" src="Rick_Astley_Never_Gonna_Give_You_Up.mp3" preload="auto" loop></audio>
+
 
   <script>
     const noBtn = document.getElementById("noBtn");
@@ -92,6 +108,7 @@
     const kitten = document.getElementById("kitten");
     const buttons = document.getElementById("buttons");
     const question = document.getElementById("question");
+    const audio = document.getElementById("celebrationAudio");
 
     let attempts = 0;
     const maxAttempts = 5;
@@ -115,8 +132,13 @@
     }
 
     yesBtn.addEventListener("click", () => {
-      question.textContent = "Yay!! 💕 I knew you’d say yes!";
-      buttons.classList.add("hidden");
+        question.textContent = "Yay!! 💕 I knew you’d say yes!";
+        buttons.classList.add("hidden");
+
+        audio.volume = 0.5;
+        audio.play().catch(e => {
+            console.log("Autoplay blocked:", e);
+        });
     });
   </script>
 </body>
