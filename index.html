@@ -4,105 +4,21 @@
   <meta charset="UTF-8" />
   <title>Be My Valentine 💖</title>
 
-  <!-- Google Analytics (replace with your own GA4 Measurement ID) -->
-  <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E3727DY7HP"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  <!-- App config -->
+  <script src="config.js"></script>
 
-    gtag('config', 'G-E3727DY7HP');
-    </script>
-
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #ffd6e8, #ffeef5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Arial', sans-serif;
-      overflow: hidden;
-    }
-
-    .container {
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      color: #d6336c;
-    }
-
-    .buttons {
-      margin-top: 30px;
-      position: relative;
-      height: 200px;
-    }
-
-    button {
-      font-size: 1.2rem;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      position: fixed;
-      transition: transform 0.15s ease;
-      z-index: 10;
-    }
-
-    #yesBtn {
-      background-color: #51cf66;
-      color: white;
-      left: 50%;
-      transform: translateX(-120%);
-    }
-
-    #noBtn {
-      background-color: #ff6b6b;
-      color: white;
-      left: 50%;
-      transform: translateX(20%);
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .kitten {
-      margin-top: 20px;
-    }
-
-    .kitten img {
-      width: 250px;
-      border-radius: 20px;
-    }
-
-    /* Explosion effects */
-    @keyframes shake {
-      0% { transform: translate(0, 0); }
-      25% { transform: translate(-6px, 6px); }
-      50% { transform: translate(6px, -6px); }
-      75% { transform: translate(-6px, -6px); }
-      100% { transform: translate(0, 0); }
-    }
-
-    .explode {
-      animation: shake 0.4s infinite;
-    }
-
-    .dark {
-      background: black;
-      color: white;
-    }
-  </style>
+  <!-- Analytics wrapper -->
+  <script src="analytics.js"></script>
+  
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
   <div class="container">
     <h1 id="question">Will you be my valentine? 🌹</h1>
+    <script>trackPageState("Will You Be My Valentine 💖");</script>
+
+
 
     <div class="buttons" id="buttons">
       <button id="yesBtn">Yes 💖</button>
@@ -110,96 +26,18 @@
     </div>
 
     <div class="kitten hidden" id="kitten">
-      <h2>Don’t play with me 😿</h2>
-      <!--<img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Sad kitten">-->
-      <img src="gunCat.gif" alt="Sad kitten">
+      <h1>Don’t play with me 😿</h1>
+        <img src="media/gunCat.gif" alt="Sad kitten">
     </div>
   </div>
 
   <!-- Audio -->
    <audio id="celebrationAudio"
-         src="Rick_Astley_Never_Gonna_Give_You_Up.mp3"
+         src="media/Rick_Astley_Never_Gonna_Give_You_Up.mp3"
          preload="auto"
          loop>
   </audio>
 
-  <script>
-    const noBtn = document.getElementById("noBtn");
-    const yesBtn = document.getElementById("yesBtn");
-    const kitten = document.getElementById("kitten");
-    const buttons = document.getElementById("buttons");
-    const question = document.getElementById("question");
-    const audio = document.getElementById("celebrationAudio");
-
-    let attempts = 0;
-    const maxAttempts = 5;
-
-    noBtn.addEventListener("mouseenter", handleNoInteraction);
-    noBtn.addEventListener("click", handleNoInteraction);
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    gtag("event", "yes_clicked", {
-      device_type: isMobile ? "mobile" : "desktop"
-    });
-
-
-    function handleNoInteraction() {
-      attempts++;
-      gtag("event", "no_attempt", {
-      event_category: "valentine",
-      event_label: "No Button Hover",
-      value: attempts
-    });
-
-
-      if (attempts >= maxAttempts) {
-        triggerKittenMode();
-        return;
-      }
-
-      moveNoButtonRandomly();
-    }
-
-    function moveNoButtonRandomly() {
-      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-
-      noBtn.style.left = `${x}px`;
-      noBtn.style.top = `${y}px`;
-    }
-
-    function triggerKittenMode() {
-      question.textContent = "";
-      buttons.classList.add("hidden");
-      kitten.classList.remove("hidden");
-  
-      // Optional chaos mode 🔥
-      setTimeout(() => {
-        document.body.classList.add("explode");
-      }, 3000);
-
-      setTimeout(() => {
-        document.body.classList.remove("explode");
-        document.body.classList.add("dark");
-        document.body.innerHTML = "<h1>💥 Too late.</h1>";
-      }, 4000);
-      
-    }
-
-    yesBtn.addEventListener("click", () => {
-
-        gtag("event", "yes_clicked", {
-            event_category: "valentine",
-            event_label: "Yes Button",
-            value: attempts
-        });
-        question.textContent = "Yay!! 💕 I knew you’d say yes!";
-        buttons.classList.add("hidden");
-
-        audio.volume = 0.5;
-        audio.play().catch(e => {
-            console.log("Autoplay blocked:", e);
-        });
-    });
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>

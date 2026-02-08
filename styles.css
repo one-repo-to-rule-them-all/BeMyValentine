@@ -1,0 +1,81 @@
+body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffd6e8, #ffeef5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.9rem;
+      color: #d6336c;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      position: relative;
+      height: 200px;
+    }
+
+    button {
+      font-size: 1.2rem;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      position: fixed;
+      transition: transform 0.15s ease;
+      z-index: 10;
+    }
+
+    #yesBtn {
+      background-color: #51cf66;
+      color: white;
+      left: 50%;
+      transform: translateX(-120%);
+    }
+
+    #noBtn {
+      background-color: #ff6b6b;
+      color: white;
+      left: 50%;
+      transform: translateX(20%);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .kitten {
+      margin-top: 20px;
+    }
+
+    .kitten img {
+      width: 320px;
+      border-radius: 20px;
+    }
+
+    /* Explosion effects */
+    @keyframes shake {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-6px, 6px); }
+      50% { transform: translate(6px, -6px); }
+      75% { transform: translate(-6px, -6px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    .explode {
+      animation: shake 0.4s infinite;
+    }
+
+    .dark {
+      background: black;
+      color: white;
+    }

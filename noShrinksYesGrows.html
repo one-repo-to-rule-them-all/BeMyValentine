@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Be My Valentine 💖</title>
+
+</head>
+
+<body>
+  <div class="container">
+    <h1 id="question">Will you be my valentine? 🌹</h1>
+
+    <div class="buttons" id="buttons">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn">No 😅</button>
+    </div>
+
+    <div class="kitten hidden" id="kitten">
+      <h2>Don’t play with me 😿</h2>
+      <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Sad kitten">
+    </div>
+  </div>
+
+<script>
+  
+  function noShrinksYesGrows() {
+    attempts++;
+
+    yesScale += 0.15;
+    noScale -= 0.15;
+
+    yesBtn.style.setProperty("--scale", yesScale);
+    noBtn.style.setProperty("--scale", Math.max(noScale, 0.4));
+
+    if (attempts >= maxAttempts) {
+      buttons.classList.add("hidden");
+      kitten.classList.remove("hidden");
+    }
+  }
+
+ 
+</script>
+
+
+</body>
+</html>
