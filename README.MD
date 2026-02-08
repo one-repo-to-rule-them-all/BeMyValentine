@@ -61,8 +61,16 @@ cd BeMyValentine
 6. [https://your-username.github.io/your-repo-name/](https://your-username.github.io/your-repo-name/)
 
 ---
+## ⚠️ Privacy & Security
+
+- No backend
+- No cookies manually set
+- No personal data collected
+- Safe for public hosting
+---
 
 ## 🛠 Project Structure
+<pre>
 / (root)
 │
 ├── index.html
@@ -72,13 +80,5 @@ cd BeMyValentine
 ├── README.MD   
 └── media
     ├── Rick_Astley_Never_Gonna_Give_You_Up.mp3
-    ├── gunCat.gif
-
----
-
-## ⚠️ Privacy & Security
-
-- No backend
-- No cookies manually set
-- No personal data collected
-- Safe for public hosting
+    └── gunCat.gif
+</pev>

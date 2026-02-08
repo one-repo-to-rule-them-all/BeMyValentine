@@ -33,7 +33,7 @@ function handleNoInteraction() {
 
     // Once the user hits the max attempts, switch to kitten mode
     if (attempts >= maxAttempts) {
-    triggerKittenMode();
+      triggerKittenMode();
     return;
     }
 
@@ -46,11 +46,11 @@ function handleNoInteraction() {
  * within the visible viewport bounds
  */
 function moveNoButtonRandomly() {
-    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
 
-    noBtn.style.left = `${x}px`;
-    noBtn.style.top = `${y}px`;
+  noBtn.style.left = `${x}px`;
+  noBtn.style.top = `${y}px`;
 }
 
 /**
@@ -61,29 +61,29 @@ function moveNoButtonRandomly() {
  * - Triggers optional chaos / explosion effect
  */
 function triggerKittenMode() {
-    // Virtual pageview for GA (SPA-style tracking)
-    trackPageState("Don't Play With Me 😿");
+  // Virtual pageview for GA (SPA-style tracking)
+  trackPageState("Don't Play With Me 😿");
 
-    // Remove the question and buttons
-    question.textContent = "";
-    buttons.classList.add("hidden");
+  // Remove the question and buttons
+  question.textContent = "";
+  buttons.classList.add("hidden");
 
-    // Reveal the kitten message / image
-    kitten.classList.remove("hidden");
+  // Reveal the kitten message / image
+  kitten.classList.remove("hidden");
 
-    // Optional chaos mode 🔥 (screen shake)
-    setTimeout(() => {
-      document.body.classList.add("explode");
-    }, 2500);
+  // Optional chaos mode 🔥 (screen shake)
+  setTimeout(() => {
+    document.body.classList.add("explode");
+  }, 2500);
 
-    // Final dark screen + message
-    setTimeout(() => {
-      trackPageState("💥 Too Late");
+  // Final dark screen + message
+  setTimeout(() => {
+    trackPageState("💥 Too Late");
 
-      document.body.classList.remove("explode");
-      document.body.classList.add("dark");
-      document.body.innerHTML = "<h1>💥 Too late.</h1>";
-    }, 3500);
+    document.body.classList.remove("explode");
+    document.body.classList.add("dark");
+    document.body.innerHTML = "<h1>💥 Too late.</h1>";
+  }, 3500);
     
 }
 
