@@ -73,12 +73,13 @@ cd BeMyValentine
 <pre>
 / (root)
 │
-├── index.html
-├── styles.css
-├── analytics.js
-├── app.js
-├── README.MD   
-└── media
-    ├── Rick_Astley_Never_Gonna_Give_You_Up.mp3
-    └── gunCat.gif
+├── index.html        # Main entry point and layout structure
+├── styles.css        # Frontend styling and CSS variables
+├── config.js         # Variable definitions 
+├── analytics.js      # Analytics setup and tag/event helpers
+├── app.js            # Main application logic and interactivity
+├── README.MD         # Project documentation 
+└── media/            # Folder for assets (images, audio)
+    ├── Rick_Astley_Never_Gonna_Give_You_Up.mp3 # Background audio track
+    └── gunCat.gif    # Animated GIF for the main landing page
 </pev>
